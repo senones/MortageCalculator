@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mortgage Calculator</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/codelogo2.png">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Index.html"><i class="bx bx-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Code.html"><i class="bx bx-code"></i>The Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" target="_blank"><i class="bx bxl-github"></i>Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.senonuzeiroski.com/" target="_blank"><i class="bx bx-folder-open"></i>Portfolio</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>                
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Mortgage Ammortization Calculator</h1>
+        </div>
+
+        <!-- ROW 1 -->
+        <div class="row">
+
+            <!--Loan Information Column-->
+            <div class="col-lg-4 mb-4">
+                <!-- Input Fields -->
+                <div class="card mb-4">
+
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">LOAN INFORMATION</h6>
+                    </div>
+
+                    <form class="card-body">
+                        <div class="row">
+                            <div class="col text-right">
+                                <label for="loan"><h6 class="font-weight-bold text-primary">Enter Loan Amount ($): </h6></label>
+                            </div>
+                            <div class="col text-left">
+                                <input type="number" placeholder="Loan Amount ($)" id="loan"/>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col text-right">
+                                <label for="term"><h6 class="font-weight-bold text-primary">Enter Term (# Months): </h6></label>
+                            </div>
+                            <div class="col text-left">
+                                <input type="number" placeholder="Term (Months)" id="term"/>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col text-right">
+                                <label for="rate"><h6 class="font-weight-bold text-primary">Enter Interest Rate (%): </h6></label>
+                            </div>
+                            <div class="col text-left">
+                                <input type="number" placeholder="Interest Rate (%)" id="rate"/>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col text-right">
+                                <button type="button" class="btn btn-primary" id="calc">CALCULATE</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <!--Loan Calculations Column-->
+            <div class="col-lg-8 mb-4">
+                <div class="card mb-4">
+
+                    <!-- Card Header -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">LOAN CALCULATIONS</h6>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">                        
+                        
+                        <div class="row mt-2">
+                            <!-- Initial Loan Amount -->
+                            <div class="col-xl-6 col-md-6">
+                                <div class="card border-left-primary h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Initial Loan Amount:</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="totBal"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Interest Rate -->
+                            <div class="col-xl-6 col-md-6">
+                                <div class="card border-left-primary h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Interest Rate:</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="intRate"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <!-- Term Length -->
+                            <div class="col-xl-6 col-md-6 ">
+                                <div class="card border-left-primary h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Term Length:</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="termMon"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Monthly Payment -->
+                            <div class="col-xl-6 col-md-6">
+                                <div class="card border-left-primary h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Monthly Payment:</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="monPmt"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+
+                        <div class="row mt-4">
+                            <!-- Total Payments -->
+                            <div class="col-xl-6 col-md-6 ">
+                                <div class="card border-left-primary h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Payments:</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="totPmt"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Total Interest -->
+                            <div class="col-xl-6 col-md-6">
+                                <div class="card border-left-primary h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Interest:</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="totInt"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="row text-center">
+            <div class="col">
+                <hr />
+                <h5 class="mb-0 font-weight-bold text-primary">LOAN BREAKDOWN</h5>
+            </div>
+        </div><hr />
+
+        <!--ROW 3-->
+        <div class="row">
+            <!-- Area Chart -->
+            <div class="col">
+                <div class="card mb-4">
+                    <!-- Card Header -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">LOAN AMMORTIZATION SCHEDULE</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area" style="height: 500px; overflow: scroll;">
+                            <table class="table table-light bg-light table-striped" id="result">
+                                <!-- Output will go Here! -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- End of Page Content -->
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="//code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="/js/custom.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+</body>
+
+</html>
